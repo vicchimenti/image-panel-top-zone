@@ -83,7 +83,7 @@ try {
         sourceContent: getValueFromTag('<t4 type="content" name="Source" output="selective-output" modifiers="nav_sections" format=\'<span class="spotlightSource">$value</span>\' />'),
         affiliationContent: getValueFromTag('<t4 type="content" name="Affiliation" output="selective-output" modifiers="nav_sections" format=\'<span class="spotlightAffiliation">$value</span>\' />'),
         anchorTag: getValueFromTag('<t4 type="meta" meta="html_anchor" />'),
-        contentIdTag: getValueFromTag('content<t4 type="meta" meta="content_id" />')
+        contentIdTag: getValueFromTag('<t4 type="meta" meta="content_id" />')
     }
 
 
@@ -115,7 +115,7 @@ try {
 
         var closeDiv = '</div>'
         var closeLink = '</a>'
-        var mainWrapper = '<div class="contentItem spotlightWrapper standardContent g-0 w-50 d-flex flex-col flex-md-row" id="' + dict.contentIdTag.content + '" data-position-default="Main" data-position-selected="Main">'
+        var mainWrapper = '<div class="contentItem spotlightWrapper standardContent g-0 w-50 d-flex flex-col flex-md-row" id="id' + dict.contentIdTag.content + '" data-position-default="Main" data-position-selected="Main">'
         var rowWrapper = '<div class="row w-100 mx-0">'
         var spotlightWrapper = '<div id="spotlightImg" class="spotlightImage col-xs-12 col-md-4">'
         var spotlightArrow = '<span class="spotlightArrow" aria-hidden="false"></span>'
