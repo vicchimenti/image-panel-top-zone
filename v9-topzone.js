@@ -43,7 +43,7 @@ function getContentValues (tag) {
 /***
  *      Write the document
  */
-function writeHtml(array) {
+function writeDocument(array) {
     for(var i = 0; i < array.length; i++) {
         document.write(array[i])
     }
@@ -136,7 +136,7 @@ try {
          *      Write the document once
          */
         appendToTag("head", "style", extraStyle, "spotlightExtraStyles")
-        writeHtml(
+        writeDocument(
             [	
                 mainWrapper, 
                 dict.anchorTag.content, 
