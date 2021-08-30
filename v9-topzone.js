@@ -53,12 +53,14 @@ function writeDocument(array) {
 
 
 /***
- *      Parse tags
+ *      Place inline styles
  */
 function appendToTag(htmlTag, type, html, id) {
+
     var newScript = "var element = document.createElement('"+type+"');element.innerHTML = '"+html+"';element.id = '"+id+"';if(!document.getElementById(element.id)){document.getElementsByTagName('"+htmlTag+"')[0].append(element);};"
     var scriptTag = "<script id='tempScript'>"+newScript+"var tempScript = document.getElementById('tempScript'); tempScript.parentNode.removeChild(tempScript)</script>"
     document.write(scriptTag)
+
 }
 
 
@@ -130,12 +132,12 @@ try {
         var bioLinkTag = "<a class='spotlightBioLink' href='" + dict.bioLinkContent.content + "' />"
         var clearFix = '<div class="clearfix"></div>'
         var extraStyle = '.standardContent img { padding: 0px !important; } .spotlightCopy p { font-size: 1rem !important; }'
+        appendToTag("head", "style", extraStyle, "spotlightExtraStyles")
 
 
         /***
          *      Write the document once
          */
-        appendToTag("head", "style", extraStyle, "spotlightExtraStyles")
         writeDocument(
             [	
                 mainWrapper, 
