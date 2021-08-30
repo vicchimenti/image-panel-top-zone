@@ -10,8 +10,19 @@
  */
 
 
+
+
+/***
+ *      Import T4 Utilities
+ */
 importClass(com.terminalfour.publish.utils.BrokerUtils)
 
+
+
+
+/***
+ *      Extract content values from T4 element tags
+ */
 function getValueFromTag (tag) {
   try {
     return {
@@ -26,19 +37,42 @@ function getValueFromTag (tag) {
   }
 }
 
+
+
+
+/***
+ *      Write the document
+ */
 function writeHtml(array) {
     for(var i = 0; i < array.length; i++) {
         document.write(array[i])
     }
 }
 
+
+
+
+/***
+ *      Parse tags
+ */
 function appendToTag(htmlTag, type, html, id) {
     var newScript = "var element = document.createElement('"+type+"');element.innerHTML = '"+html+"';element.id = '"+id+"';if(!document.getElementById(element.id)){document.getElementsByTagName('"+htmlTag+"')[0].append(element);};"
     var scriptTag = "<script id='tempScript'>"+newScript+"var tempScript = document.getElementById('tempScript'); tempScript.parentNode.removeChild(tempScript)</script>"
     document.write(scriptTag)
 }
 
+
+
+
+/***
+ *      Process content
+ */
 try {
+
+
+    /***
+     *      Dictionary of content
+     */
     var dict = {
         linkContent: getValueFromTag('<t4 type="content" name="Image Link" output="linkurl" modifiers="nav_sections"/>'),
         spotlightImage: getValueFromTag("<t4 type='content' name='Spotlight Image' output='imageurl' />"),
@@ -51,7 +85,10 @@ try {
         anchorTag: getValueFromTag('<t4 type="meta" meta="html_anchor" />')
     }
 
-    // Get all the errors returned from getValueFromTag and put them in errorString.
+
+    /***
+     *      Parse dictionary for errors
+     */
     var errorString = ''
     var keys = Object.keys(dict)
     for (var i = 0; i < keys.length; i++) {
@@ -60,10 +97,21 @@ try {
         }
     }
 
+
+    /***
+     *      Handle errors
+     */
     if (errorString) {
+
         document.write('Faild to get needed profile information from the following:\n')
         document.write('<pre>' + errorString + '</pre>')
+
+
+    /***
+     *      Format valid content
+     */
     } else {
+
         var closeDiv = '</div>'
         var closeLink = '</a>'
         var mainWrapper = '<div class="contentItem spotlightWrapper standardContent g-0 w-50 d-flex flex-col flex-md-row" id="id<t4 type=\'meta\' meta=\'content_id\' />" data-position-default="Main" data-position-selected="Main">'
@@ -82,6 +130,10 @@ try {
         var clearFix = '<div class="clearfix"></div>'
         var extraStyle = '.standardContent img { padding: 0px !important; } .spotlightCopy p { font-size: 1rem !important; }'
 
+
+        /***
+         *      Write the document once
+         */
         appendToTag("head", "style", extraStyle, "spotlightExtraStyles")
         writeHtml(
             [	
@@ -112,6 +164,10 @@ try {
                 closeDiv
         ])
     }
+
+
+
+    
 } catch (error) {
     document.write(error.message)
 }
