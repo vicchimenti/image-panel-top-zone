@@ -23,7 +23,7 @@ importClass(com.terminalfour.publish.utils.BrokerUtils)
 /***
  *      Extract content values from T4 element tags
  */
-function getValueFromTag (tag) {
+function getContentValues (tag) {
   try {
     return {
       isError: false,
@@ -70,20 +70,20 @@ function appendToTag(htmlTag, type, html, id) {
 try {
 
 
-    /***
+  /***
      *      Dictionary of content
      */
     var dict = {
-        linkContent: getValueFromTag('<t4 type="content" name="Image Link" output="linkurl" modifiers="nav_sections"/>'),
-        spotlightImage: getValueFromTag("<t4 type='content' name='Spotlight Image' output='imageurl' />"),
-        spotlightImageAlt: getValueFromTag("<t4 type='content' name='Source' output='normal' modifiers='striptags,htmlentities' />"),
-        titleContent: getValueFromTag('<t4 type="content" name="Text Title" output="normal" modifiers="striptags,htmlentities" />'),
-        textContent: getValueFromTag('<t4 type="content" name="Text" output="normal" modifiers="striptags,htmlentities" />'),
-        bioLinkContent: getValueFromTag('<t4 type="content" name="Bio Link" output="linkurl" modifiers="nav_sections" />'),
-        sourceContent: getValueFromTag('<t4 type="content" name="Source" output="selective-output" modifiers="nav_sections" format=\'<span class="spotlightSource">$value</span>\' />'),
-        affiliationContent: getValueFromTag('<t4 type="content" name="Affiliation" output="selective-output" modifiers="nav_sections" format=\'<span class="spotlightAffiliation">$value</span>\' />'),
-        anchorTag: getValueFromTag('<t4 type="meta" meta="html_anchor" />'),
-        contentIdTag: getValueFromTag('<t4 type="meta" meta="content_id" />')
+        linkContent: getContentValues('<t4 type="content" name="Image Link" output="linkurl" modifiers="nav_sections"/>'),
+        spotlightImage: getContentValues("<t4 type='content' name='Spotlight Image' output='imageurl' />"),
+        spotlightImageAlt: getContentValues("<t4 type='content' name='Source' output='normal' modifiers='striptags,htmlentities' />"),
+        titleContent: getContentValues('<t4 type="content" name="Text Title" output="normal" modifiers="striptags,htmlentities" />'),
+        textContent: getContentValues('<t4 type="content" name="Text" output="normal" modifiers="striptags,htmlentities" />'),
+        bioLinkContent: getContentValues('<t4 type="content" name="Bio Link" output="linkurl" modifiers="nav_sections" />'),
+        sourceContent: getContentValues('<t4 type="content" name="Source" output="selective-output" modifiers="nav_sections" format=\'<span class="spotlightSource">$value</span>\' />'),
+        affiliationContent: getContentValues('<t4 type="content" name="Affiliation" output="selective-output" modifiers="nav_sections" format=\'<span class="spotlightAffiliation">$value</span>\' />'),
+        anchorTag: getContentValues('<t4 type="meta" meta="html_anchor" />'),
+        contentIdTag: getContentValues('<t4 type="meta" meta="content_id" />')
     }
 
 
