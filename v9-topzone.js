@@ -1,3 +1,15 @@
+/***
+ *      @author Victor Chimenti, MSCS
+ *      @file v9-topzone.js
+ *      @see Seattle University School Image Panel Content Type for Top Zone
+ *      v9/topzone
+ *
+ *      Document will write once when the page loads
+ *
+ *      @version 2.0
+ */
+
+
 importClass(com.terminalfour.publish.utils.BrokerUtils)
 
 function getValueFromTag (tag) {
